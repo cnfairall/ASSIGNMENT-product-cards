@@ -92,30 +92,59 @@ const renderToDom = (divId, htmlToRender) => {
 const cardsOnDom = (array) => {
   let domString = "";
   for (const tater of potatoes) {
-    domString +=
-    `<div id="card">
-    <header>
-      <h2>${tater.title}</h2>
-    </header>
-    <section>
-      <img src="${tater.imageURL}" alt="${tater.altText}">
-      <article>${tater.description}</article>
-      <h5>${tater.isAvailable}</h5>
-    </section>
-    <section>
-      <h4>Specifications</h4>
-      <p>Size: ${tater.size}</p>
-      <p>Weight: ${tater.weight}</p>
-      <p>Valid until: ${tater.dateInvalid}</p>
-    </section>
-    <section>
-      <h4>Pricing</h4>
-      <p>Price for 1: ${tater.priceOne}</p>
-      <p>Price for 10: ${tater.priceTen}</p>
-      <p>Price for 100: ${tater.priceHundred}</p>
-    </section>
-  </div>`
-  };
+    if (tater.isAvailable === "Not Available") {
+      domString +=
+      `<div id="card">
+      <header>
+        <h2>${tater.title}</h2>
+      </header>
+      <section>
+        <div class="parent">
+        <img class="image1" src="${tater.imageURL}" alt="${tater.altText}">
+        <img class="image2" src="not_available.png" alt="Not available">
+        </div>
+        <article>${tater.description}</article>
+        <h5>${tater.isAvailable}</h5>
+      </section>
+      <section>
+        <h4>Specifications</h4>
+        <p>Size: ${tater.size}</p>
+        <p>Weight: ${tater.weight}</p>
+        <p>Valid until: ${tater.dateInvalid}</p>
+      </section>
+      <section>
+        <h4>Pricing</h4>
+        <p>Price for 1: ${tater.priceOne}</p>
+        <p>Price for 10: ${tater.priceTen}</p>
+        <p>Price for 100: ${tater.priceHundred}</p>
+      </section>
+    </div>`
+    } else {
+      domString +=
+      `<div id="card">
+      <header>
+        <h2>${tater.title}</h2>
+      </header>
+      <section>
+        <img src="${tater.imageURL}" alt="${tater.altText}">
+        <article>${tater.description}</article>
+        <h5>${tater.isAvailable}</h5>
+      </section>
+      <section>
+        <h4>Specifications</h4>
+        <p>Size: ${tater.size}</p>
+        <p>Weight: ${tater.weight}</p>
+        <p>Valid until: ${tater.dateInvalid}</p>
+      </section>
+      <section>
+        <h4>Pricing</h4>
+        <p>Price for 1: ${tater.priceOne}</p>
+        <p>Price for 10: ${tater.priceTen}</p>
+        <p>Price for 100: ${tater.priceHundred}</p>
+      </section>
+    </div>`
+   }
+  }
 
 renderToDom("#container", domString);
 };
